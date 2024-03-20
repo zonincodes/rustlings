@@ -3,7 +3,6 @@
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
@@ -15,11 +14,22 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+    if num == 0 || num == 1 {
+        return 1;
+    }
+
+    let num : i32 =(1..=num as i32).reduce(|acc, x| acc  * x ).unwrap();
+    num as u64
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn u64_test() {
+        assert_eq!(10u64, 5u64 * 2u64)
+    }
 
     #[test]
     fn factorial_of_0() {
