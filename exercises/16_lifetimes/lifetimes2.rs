@@ -7,7 +7,8 @@
 // hint.
 
 
-fn longest<'a, 'b>(x: &'a str, y: &'a str) -> &'a str {
+
+fn longest<'a: 'b, 'b>(x: &'a str, y: &'b str) -> &'b str {
     if x.len() > y.len() {
         x
     } else {
@@ -19,7 +20,7 @@ fn main() {
     let string1 = String::from("long string is long");
     let result;
     {
-        let string2: &'static str = "xyz";
+        let string2: &str = "xyz";
         result = longest(string1.as_str(), string2);
     }
     println!("The longest string is '{}'", result);
